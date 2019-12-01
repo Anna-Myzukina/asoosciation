@@ -158,12 +158,19 @@ Call this user the "creator".
 ### In app\models\user.rb
 
     has_many :events, :foreign_key => :creator_id
-    Add the foreign key to the Events model
+
+### Add the foreign key to the Events model
+
     rails generate migration add_creator_to_events creator_id:integer
 
-Also add the index to the migration
+### Also add the index to the migration
+
+Add to file db/migrate/[timestamp]_create_microposts.rb next code
 
     add_index :events, :creator_id
+
+Then run in terminal
+
     bundle exec rake db:migrate
 
 ## Step 3 User's Show page to list all users events
