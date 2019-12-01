@@ -135,8 +135,10 @@ Use thp part from RRT [Log in](https://www.learnenough.com/ruby-on-rails-4th-edi
 
 ## Step 1 Build and migrate your Event model
 
+    rails generate controller Event new
+    
     rails generate model Event location:string date:date
-    bundle exec rake db:migrate
+    
     rails db:migrate
 
 * If something wrong you can undo this command rails db:migrate with a single command, called db:rollback    
