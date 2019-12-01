@@ -87,6 +87,7 @@ have you can visit localhost:3000/static_pages/home or localhost:3000/static_pag
 
         
 ## Next step we start generate Model-View-Controller (MVC):
+![](https://github.com/Anna-Myzukina/asoosciation/blob/master/app/assets/images/MVC.png)
 
 # User
 
