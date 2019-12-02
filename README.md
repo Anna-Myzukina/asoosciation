@@ -260,7 +260,11 @@ Use this part from RRT [Sign up](https://www.learnenough.com/ruby-on-rails-4th-e
         <% provide(:title, 'Contact') %>
         <h1>About</h1>
         <p>
-          We have to build a site similar to a Eventbrite which allows users to create events and then manage user signups. I must be honest, I decided to cheat a little with this project and completely miss out the first part which was to setup the sign-in mechanism. I started with a copy and paste from our build of the rails tutorial up-to chapter 10. The reason I did this was I wanted to create a proper full featured application that I could use in production, so i wanted to save some time.
+          We have to build a site similar to a Eventbrite which allows users to create events and then manage 
+          user signups. I must be honest, I decided to cheat a little with this project and completely miss
+          out the first part which was to setup the sign-in mechanism. I started with a copy and paste from 
+          our build of the rails tutorial up-to chapter 10. The reason I did this was I wanted to create a 
+          proper full featured application that I could use in production, so i wanted to save some time.
           </a>
         </p>
         
@@ -454,7 +458,34 @@ Now that new users can sign up for our site (Chapter 7), it’s time to give the
 
 Use thp part from RRT [Log in](https://www.learnenough.com/ruby-on-rails-4th-edition-tutorial/basic_login)
 
+#### Step 1 Sessions controller
 
+        rails generate controller Sessions new
+
+
+Make changes in rotes.rb file you can find it here config/routes.rb
+
+        Rails.application.routes.draw do
+
+          root 'static_pages#home'
+
+          get 'static_pages/home'
+          get 'static_pages/about'
+
+          get  '/signup',  to: 'users#new'
+          post '/signup',  to: 'users#create'
+
+          get    '/login',   to: 'sessions#new'
+          post   '/login',   to: 'sessions#create'
+          delete '/logout',  to: 'sessions#destroy'
+
+          get 'sessions/new'
+
+          get 'users/new'
+
+
+          resources :users
+        end
 
 2. This to _header.html.erb you can find it here app/views/layouts/_header.html.erb
 
