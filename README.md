@@ -443,6 +443,11 @@ A little code for footer
               float: left;
               margin-left: 15px;
             }
+            
+Last this two lines add to file application.js you can find it here: app/assets/javascripts/application.js   
+  
+    //= require jquery
+    //= require bootstrap
 
 ### Step 4 Log in/ Log out chapter 8 RRT
 Now that new users can sign up for our site (Chapter 7), it’s time to give them the ability to log in and log out.
@@ -496,9 +501,9 @@ Use thp part from RRT [Log in](https://www.learnenough.com/ruby-on-rails-4th-edi
                   </div>
                 </header>
 
-### Wow... big part ahead, I'm a little tired so decide add here something to relax )) After continue create project
+### Wow... big part ahead, I'm a little tired so decide add here something to relax )) After we should continue create project
 
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](https://www.youtube.com/watch?v=D6UTHCzUlAo&list=PL7TFEeUrwB2UYy-EkfMFuxOmTPDDMkKhT&index=5)
+[![Crazy video Bishop Briggs - CHAMPION](https://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](https://www.youtube.com/watch?v=D6UTHCzUlAo&list=PL7TFEeUrwB2UYy-EkfMFuxOmTPDDMkKhT&index=5)
 
 
 # Event
