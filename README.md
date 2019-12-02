@@ -486,6 +486,20 @@ Make changes in rotes.rb file you can find it here config/routes.rb
 
           resources :users
         end
+        
+        
+  Since we’ve now added several custom named routes, it’s useful to look at the complete list of
+  the routes for our application, which we can generate using 
+  Run in terminal next:
+  
+        rails routes
+        
+  After run this command you can see      
+        
+        
+ ![]()    
+        
+        
 
 2. This to _header.html.erb you can find it here app/views/layouts/_header.html.erb
 
