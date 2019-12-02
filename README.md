@@ -171,6 +171,76 @@ app/models/user.rb
 
 Use this part from RRT [Sign up](https://www.learnenough.com/ruby-on-rails-4th-edition-tutorial/sign_up)
 
+Add next code here controllers/users_controller.rb
+
+        def show
+            @user = User.find(params[:id])
+          end
+
+          def new
+            @user = User.new
+          end
+
+          def create
+            @user = User.new(user_params)
+            if @user.save
+              log_in @user
+              flash[:success] = "Welcome to the Sample App!"
+              redirect_to @user
+            else
+              render 'new'
+            end
+          end
+
+          private
+
+            def user_params
+              params.require(:user).permit(:name, :email)
+            end
+
+Add code to sessions controller 
+
+        class SessionsController < ApplicationController
+          def new
+          end
+
+          def create
+            user = User.find_by(email: params[:session][:email].downcase)
+            if user && user.authenticate(params[:session][:password])
+              log_in user
+              redirect_to user
+            else
+              flash[:danger] = 'Invalid email/password combination' # Not quite right!
+              render 'new'
+            end
+          end
+
+          def destroy
+            log_out
+            redirect_to root_url
+          end
+        end
+
+app/views/users/show.html.erb
+
+        <% provide(:title, @user.name) %>
+        <div class="row">
+          <aside class="col-md-4">
+            <section class="user_info">
+              <h1>
+
+                <%= @user.name %>
+              </h1>
+            </section>
+          </aside>
+        </div>
+        
+        
+Now you can run server: rails s
+In browser open your form http://localhost:3000/signup
+
+#### Add styles
+
 - [ ] Combine Bootstrap with some custom CSS rules to start adding some style to the sample application. It’s worth noting that using Bootstrap automatically makes our application’s design responsive, ensuring that it looks sensible across a wide range of devices.
 
 - [ ] Let's create structure:
@@ -499,6 +569,25 @@ Make changes in rotes.rb file you can find it here config/routes.rb
         
  ![]()    
         
+        
+ Let's add form for login      
+        
+      <% provide(:title, "Log in") %>
+        <h1>Log in</h1>
+
+        <div class="row">
+          <div class="col-md-6 col-md-offset-3">
+            <%= form_for(:session, url: login_path) do |f| %>
+
+              <%= f.label :email %>
+              <%= f.email_field :email, class: 'form-control' %>
+
+              <%= f.submit "Log in", class: "btn btn-primary" %>
+            <% end %>
+
+            <p>New user? <%= link_to "Sign up now!", signup_path %></p>
+          </div>
+        </div>
         
 
 2. This to _header.html.erb you can find it here app/views/layouts/_header.html.erb
