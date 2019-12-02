@@ -345,7 +345,7 @@ And this for typography
               line-height: 1.7em;
             }
             
-Finaly styles for header
+Some styles for header
 
         /* header */
 
@@ -364,6 +364,85 @@ Finaly styles for header
           color: #fff;
           text-decoration: none;
         }
+        
+        
+
+Something for form
+
+            /* forms */
+
+            input, textarea, select, .uneditable-input {
+              border: 1px solid #bbb;
+              width: 100%;
+              margin-bottom: 15px;
+              @include box_sizing;
+            }
+            .form-inline .form-control {
+              margin-top: 14px;
+            }
+            .d-flex{
+              display: flex;
+            }
+
+            input {
+              height: auto !important;
+            }
+
+            /* dropdown menu*/
+
+            .dropdown-item{
+              display: block;
+                width: 100%;
+                padding: .25rem 1.5rem;
+                clear: both;
+                font-weight: 400;
+                color: #212529;
+                text-align: inherit;
+                white-space: nowrap;
+                background-color: transparent;
+                border: 0;
+            }
+            .dropdown-item:hover{
+              background: rgba(209, 207, 207, 0.726);
+            }
+            .dropdown-divider{
+              height: 0;
+              overflow: hidden;
+              border-top: 1px solid #e9ecef;
+            }
+
+A little code for footer
+
+            /* footer */
+
+            footer {
+              margin-top: 45px;
+              padding-top: 5px;
+              border-top: 1px solid #eaeaea;
+              color: #777;
+            }
+
+            footer a {
+              color: #555;
+            }
+
+            footer a:hover {
+              color: #222;
+            }
+
+            footer small {
+              float: left;
+            }
+
+            footer ul {
+              float: right;
+              list-style: none;
+            }
+
+            footer ul li {
+              float: left;
+              margin-left: 15px;
+            }
 
 ### Step 4 Log in/ Log out chapter 8 RRT
 Now that new users can sign up for our site (Chapter 7), it’s time to give them the ability to log in and log out.
@@ -416,6 +495,11 @@ Use thp part from RRT [Log in](https://www.learnenough.com/ruby-on-rails-4th-edi
                     </nav>
                   </div>
                 </header>
+
+### Wow... big part ahead, I'm a little tired so decide add here something to relax )) After continue create project
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](https://www.youtube.com/watch?v=D6UTHCzUlAo&list=PL7TFEeUrwB2UYy-EkfMFuxOmTPDDMkKhT&index=5)
+
 
 # Event
 
