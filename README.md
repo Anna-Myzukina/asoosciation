@@ -173,6 +173,103 @@ Use this part from RRT [Sign up](https://www.learnenough.com/ruby-on-rails-4th-e
 
 - [ ] Combine Bootstrap with some custom CSS rules to start adding some style to the sample application. It’s worth noting that using Bootstrap automatically makes our application’s design responsive, ensuring that it looks sensible across a wide range of devices.
 
+- [ ] Let's create structure:
+
+1. Add this code to application.html.erb 
+
+        <!DOCTYPE html>
+        <html>
+          <head>
+            <title>Associations</title>
+            <%= csrf_meta_tags %>
+
+            <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+            <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+          </head>
+
+          <body>
+            <%= render 'layouts/header' %>
+            <div class="container">
+              <% flash.each do |message_type, message| %>
+                <div class="alert alert-<%= message_type %>"><%= message %></div>
+              <% end %>
+              <%= yield %>
+              <%= render 'layouts/footer' %>
+              <%= debug(params) if Rails.env.development? %>
+            </div>
+        </html>
+          
+2. This to _header.html.erb you can find it here app/views/layouts/_header.html.erb
+
+        <header class="navbar navbar-fixed-top navbar-expand-lg navbar-inverse">
+                  <div class="container">
+
+                    <%= link_to "Event App", root_path, id: "logo"  %>
+                    <nav class="navbar">
+
+                      <ul class="nav navbar-nav navbar-right d-flex">
+                            <form class="form-inline my-2 my-lg-0">
+                      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+
+                            <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Dropdown
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <a class="dropdown-item" href="#">Owerview</a>
+                                    <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="#">Pricing</a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="#">Blog</a>
+                                    <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="#">Resources</a>
+                        </div>
+                      </li>
+
+                    <li><a href="/static_pages/about">About</a></li>
+                    <li><a href="/static_pages/home">Home</a></li>
+
+                        <% if !logged_in? %>
+                            <li><%= link_to "Sign Up", signup_path, class: "nav-link" %></li>
+                      <li><%= link_to "Log In", login_path, class: "nav-link" %></li>
+                        <% else %>
+
+
+                            <li><%= link_to "Log Out", logout_path, method: :delete, class: "nav-link" %></li>
+                        <% end %>
+                   </ul>
+                    </nav>
+                  </div>
+                </header>
+                
+3. This to _footer.html.erb you can fin it app/views/layouts/_footer.html.erb  
+
+        <footer class="navbar fixed-bottom navbar-light col-md-12">
+            <ul class="nav">
+                <li class="nav-item">
+                    <%= link_to "Home", root_path, class: "nav-link" %>
+                </li>
+            </ul>
+        </footer>
+        
+        
+4. This to about.html.erb
+
+        <% provide(:title, 'Contact') %>
+        <h1>About</h1>
+        <p>
+          We have to build a site similar to a Eventbrite which allows users to create events and then manage user signups. I must be honest, I decided to cheat a little with this project and completely miss out the first part which was to setup the sign-in mechanism. I started with a copy and paste from our build of the rails tutorial up-to chapter 10. The reason I did this was I wanted to create a proper full featured application that I could use in production, so i wanted to save some time.
+          </a>
+        </p>
+        
+        
+5. Something add to home.html.erb
+
+        <h1>Events</h1>
+
+                
 1. Our first step is to add Bootstrap, which in Rails applications can be accomplished with the bootstrap-sass gem
 
 Add the bootstrap-sass gem to the Gemfile.
@@ -272,6 +369,53 @@ Finaly styles for header
 Now that new users can sign up for our site (Chapter 7), it’s time to give them the ability to log in and log out.
 
 Use thp part from RRT [Log in](https://www.learnenough.com/ruby-on-rails-4th-edition-tutorial/basic_login)
+
+
+
+2. This to _header.html.erb you can find it here app/views/layouts/_header.html.erb
+
+        <header class="navbar navbar-fixed-top navbar-expand-lg navbar-inverse">
+                  <div class="container">
+
+                    <%= link_to "Event App", root_path, id: "logo"  %>
+                    <nav class="navbar">
+
+                      <ul class="nav navbar-nav navbar-right d-flex">
+                            <form class="form-inline my-2 my-lg-0">
+                      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+
+                            <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Dropdown
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <a class="dropdown-item" href="#">Owerview</a>
+                                    <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="#">Pricing</a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="#">Blog</a>
+                                    <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="#">Resources</a>
+                        </div>
+                      </li>
+
+                    <li><a href="/static_pages/about">About</a></li>
+                    <li><a href="/static_pages/home">Home</a></li>
+
+                        <% if !logged_in? %>
+                            <li><%= link_to "Sign Up", signup_path, class: "nav-link" %></li>
+                      <li><%= link_to "Log In", login_path, class: "nav-link" %></li>
+                        <% else %>
+
+
+                            <li><%= link_to "Log Out", logout_path, method: :delete, class: "nav-link" %></li>
+                        <% end %>
+                   </ul>
+                    </nav>
+                  </div>
+                </header>
 
 # Event
 
