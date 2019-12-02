@@ -171,6 +171,103 @@ app/models/user.rb
 
 Use this part from RRT [Sign up](https://www.learnenough.com/ruby-on-rails-4th-edition-tutorial/sign_up)
 
+- [ ] Combine Bootstrap with some custom CSS rules to start adding some style to the sample application. It’s worth noting that using Bootstrap automatically makes our application’s design responsive, ensuring that it looks sensible across a wide range of devices.
+
+1. Our first step is to add Bootstrap, which in Rails applications can be accomplished with the bootstrap-sass gem
+
+Add the bootstrap-sass gem to the Gemfile.
+
+
+        gem 'rails',          '5.1.6'
+        gem 'bootstrap-sass', '3.3.7'
+        
+After run commands
+        
+        bundle install
+        bundle update
+        
+2. Add file custom.css using next command
+
+        touch app/assets/stylesheets/custom.scss
+
+3 . After add next code to custom.scc, you can find this file in your project here: app/assets/stylesheets/custom.scss
+
+        @import "bootstrap-sprockets";
+        @import "bootstrap";
+        
+4. Next add this styles, we use it later
+
+            /* universal */
+
+            body {
+              padding-top: 60px;
+            }
+
+            section {
+              overflow: auto;
+            }
+
+            textarea {
+              resize: vertical;
+            }
+
+            .center {
+              text-align: center;
+            }
+
+            .center h1 {
+              margin-bottom: 10px;
+            }
+            
+And this for typography
+
+            /* typography */
+
+            h1, h2, h3, h4, h5, h6 {
+              line-height: 1;
+            }
+
+            h1 {
+              font-size: 3em;
+              letter-spacing: -2px;
+              margin-bottom: 30px;
+              text-align: center;
+            }
+
+            h2 {
+              font-size: 1.2em;
+              letter-spacing: -1px;
+              margin-bottom: 30px;
+              text-align: center;
+              font-weight: normal;
+              color: #777;
+            }
+
+            p {
+              font-size: 1.1em;
+              line-height: 1.7em;
+            }
+            
+Finaly styles for header
+
+        /* header */
+
+        #logo {
+          float: left;
+          margin-right: 10px;
+          font-size: 1.7em;
+          color: #fff;
+          text-transform: uppercase;
+          letter-spacing: -1px;
+          padding-top: 9px;
+          font-weight: bold;
+        }
+
+        #logo:hover {
+          color: #fff;
+          text-decoration: none;
+        }
+
 ### Step 4 Log in/ Log out chapter 8 RRT
 Now that new users can sign up for our site (Chapter 7), it’s time to give them the ability to log in and log out.
 
