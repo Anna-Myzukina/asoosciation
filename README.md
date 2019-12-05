@@ -275,6 +275,10 @@ Add next code here controllers/users_controller.rb
               params.require(:user).permit(:name, :email)
             end
 
+### [Sessions controller](https://www.learnenough.com/ruby-on-rails-4th-edition-tutorial/basic_login#sec-sessions_and_failed_login)
+
+    rails generate controller Sessions new
+
 Add code to sessions controller 
 
         class SessionsController < ApplicationController
