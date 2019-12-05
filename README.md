@@ -819,6 +819,100 @@ Make changes in rotes.rb file you can find it here config/routes.rb
 [![Crazy video Bishop Briggs - CHAMPION](https://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](https://www.youtube.com/watch?v=D6UTHCzUlAo&list=PL7TFEeUrwB2UYy-EkfMFuxOmTPDDMkKhT&index=5)
 
 
+=================
+
+# Event
+1.
+        rails generate model Event content:text user:references
+        
+        
+2. Listing 13.3: The Micropost migration with added index.
+db/migrate/[timestamp]_create_events.rb
+class CreateEvents < ActiveRecord::Migration[5.0]
+  def change
+    create_table :events do |t|
+      t.text :content
+      t.references :user, foreign_key: true
+
+      t.timestamps
+    end
+    add_index :events, [:user_id, :created_at]
+  end
+end
+
+3. 
+
+            rails db:migrate
+
+4. Events validations
+
+Listing 13.5: A validation for the events’s user_id. green
+app/models/event.rb
+class Event < ActiveRecord::Base
+  belongs_to :user
+  validates :user_id, presence: true
+end
+
+
+5. User/Events associations
+
+Listing 13.11: A user has_many events. green
+app/models/user.rb
+class User < ApplicationRecord
+  has_many :eveents
+  .
+  .
+  .
+end
+
+* Dependent: destroy
+
+Apart from proper ordering, there is a second refinement we’d like to add to events. Recall from Section 10.4 that site administrators have the power to destroy users. It stands to reason that, if a user is destroyed, the user’s events should be destroyed as well.
+
+We can arrange for this behavior by passing an option to the has_many association method, as shown in Listing 13.19.
+
+Listing 13.19: Ensuring that a user’s events are destroyed along with the user.
+app/models/user.rb
+class User < ApplicationRecord
+  has_many :events, dependent: :destroy
+  .
+  .
+  .
+end
+
+
+- Showing events
+
+rails generate controller Microposts
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+===========================================================
+
+
 # Event
 
 ## Step 1 Build and migrate your Event model
